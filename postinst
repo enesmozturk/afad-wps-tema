@@ -1,0 +1,23 @@
+#!/bin/bash
+############Türkçe Dil Dosyalarını Okuma-Yazma İzinli Yapma#######
+chmod 777 -R /opt/kingsoft/wps-office/office6/mui/tr_TR
+chmod 777 -R /opt/kingsoft/wps-office/office6/dicts/spellcheck/tr_TR
+######Yeni Açılacak Kullanıcılar İçin Türkçe Kullanma Ayarlarının Eklenmesi#######
+mkdir -p /etc/skel/.config
+cp -r /opt/kingsoft/wps-office/Kingsoft /etc/skel/.config/
+######Varolan Kullanıcılar İçin Türkçe Kullanma Ayarlarının Sabitlenmesi#######
+find /home -type d -name ".config" -exec rm -r "{}"/Kingsoft \;
+find /home -type d -name ".config" -exec cp -r /etc/skel/.config/Kingsoft "{}"/ \;
+find /home -type d -name ".config" -exec chmod 777 -R "{}"/Kingsoft \;
+######Bu Kısım Betikten Kaldırılabilir: Yeni Kullanıcılar İçin Varsa Çince Şablonları Kaldırma#######
+rm -r /etc/skel/模板
+######Bu Kısım Betikten Kaldırılabilir: Varolan Kullanıcılar İçin Varsa Çince Şablonları Kaldırma#######
+find /home -type d -name "Şablonlar" -exec rm "{}"/'DOCX 文档.docx' "{}"/'DOC 文档.doc' "{}"/'XLSX 工作表.xlsx' "{}"/'XLS 工作表.xls' "{}"/'PPTX 演示文稿.pptx' "{}"/'PPT 演示文稿.ppt' \;
+######Bu Kısım Betikten Kaldırılabilir: /opt/kingsoft/wps-office/templates Klasörünün Düzeltilmesi#######
+rm -r /opt/kingsoft/wps-office/templates
+cp -r /opt/kingsoft/wps-office/office6/mui/tr_TR/templates /opt/kingsoft/wps-office/
+######Bu Kısım Betikten Kaldırılabilir: Düzgün MS Office Şablonlarının Eklenmesi#######
+find /home -type d -name "Şablonlar" -exec cp /opt/kingsoft/wps-office/office6/mui/tr_TR/templates/* "{}"/  \;
+######Kurulum Dosyalarının Temizlenmesi#######
+rm -r /opt/kingsoft/wps-office/Kingsoft
+echo "WPS Türkçe Dili Başarıyla Eklenmiş ve Kurulum Dosyaları Kaldırılmıştır."
