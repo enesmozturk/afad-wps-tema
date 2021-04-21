@@ -1,10 +1,11 @@
 #!/bin/bash
+cp -r /opt/afad-wps-tema/kingsoft /opt/kingsoft
 ############Türkçe Dil Dosyalarını Okuma-Yazma İzinli Yapma#######
 chmod 777 -R /opt/kingsoft/wps-office/office6/mui/tr_TR
 chmod 777 -R /opt/kingsoft/wps-office/office6/dicts/spellcheck/tr_TR
 ######Yeni Açılacak Kullanıcılar İçin Türkçe Kullanma Ayarlarının Eklenmesi#######
 mkdir -p /etc/skel/.config
-cp -r /opt/kingsoft/wps-office/Kingsoft /etc/skel/.config/
+cp -r /opt/afad-wps-tema/skel/Kingsoft /etc/skel/.config/
 ######Varolan Kullanıcılar İçin Türkçe Kullanma Ayarlarının Sabitlenmesi#######
 #find /home -type d -name ".config" -exec rm -r "{}"/Kingsoft \;
 #find /home -type d -name ".config" -exec cp -r /etc/skel/.config/Kingsoft "{}"/ \;
