@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -r /opt/kingsoft/wps-office/templates
 cp -r /opt/afad-wps-tema/kingsoft /opt/
 ############Türkçe Dil Dosyalarını Okuma-Yazma İzinli Yapma#######
 chmod 777 -R /opt/kingsoft/wps-office/office6/mui/tr_TR
@@ -27,8 +28,7 @@ chmod 777 -R /opt/kingsoft/wps-office/office6/dicts/spellcheck/tr_TR
 #rm /home/*/*/Şablonlar/演示文稿.pptx
 #rm /home/*/*/Şablonlar/演示文稿.ppt
 ######Bu Kısım Betikten Kaldırılabilir: /opt/kingsoft/wps-office/templates Klasörünün Düzeltilmesi#######
-rm -r /opt/kingsoft/wps-office/templates
-cp -r /opt/kingsoft/wps-office/office6/mui/tr_TR/templates /opt/kingsoft/wps-office/
+#cp -r /opt/kingsoft/wps-office/office6/mui/tr_TR/templates /opt/kingsoft/wps-office/
 ######Bu Kısım Betikten Kaldırılabilir: Düzgün MS Office Şablonlarının Eklenmesi#######
 #find /home -type d -name "Şablonlar" -exec cp /opt/kingsoft/wps-office/office6/mui/tr_TR/templates/* "{}"/  \;
 #cp /opt/kingsoft/wps-office/office6/mui/tr_TR/templates/* /home/*/*/Şablonlar/
